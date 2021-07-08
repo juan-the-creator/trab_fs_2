@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 // import 'package:trab_fs_2/widgets/CAppBar.dart';
 import 'package:trab_fs_2/widgets/CAppBarButtons.dart';
 import 'package:trab_fs_2/widgets/CButton.dart';
-import 'package:trab_fs_2/widgets/CButtonExit.dart';
+// import 'package:trab_fs_2/widgets/CButtonExit.dart';
+import 'package:trab_fs_2/widgets/CField.dart';
 
 void main() {
   runApp(UITest());
@@ -19,10 +20,8 @@ class UITest extends StatelessWidget {
         body: Column(
           children: [
             CButton(btnText: "JOGAR!"),
-            CButton(btnText: "AJUDA"),
-            CButton(btnText: "REGRAS DE SEPARAÇÃO"),
-            CButtonExit(
-              btnText: "< SAIR",
+            Row(
+              children: [CField(), CField(), CField(), CField()],
             )
           ],
         ),
