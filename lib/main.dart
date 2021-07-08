@@ -15,7 +15,8 @@ void main() {
 class Jogo extends Game {
   static const int squareSpeed = 400;
   late Rect squarePos;
-  int squareDirection = 1;
+  int squareDirectionX = 1;
+  int squareDirectionY = 1;
 
   @override
   Future<void> onLoad() async {
@@ -27,12 +28,18 @@ class Jogo extends Game {
   @override
   void update(double dt) {
     //put the logic in here
-    squarePos = squarePos.translate(squareSpeed * squareDirection * dt, 0);
+    squarePos = squarePos.translate(squareSpeed * squareDirectionX * dt,
+        squareSpeed * squareDirectionY * dt);
 
-    if (squareDirection == 1 && squarePos.right > size.x) {
-      squareDirection = -1;
-    } else if (squareDirection == -1 && squarePos.left < 0) {
-      squareDirection = 1;
+    if (squareDirectionX == 1 && squarePos.right > size.x) {
+      squareDirectionX = -1;
+    } else if (squareDirectionX == -1 && squarePos.left < 0) {
+      squareDirectionX = 1;
+    }
+    if (squareDirectionY == 1 && squarePos.bottom > size.y) {
+      squareDirectionY = -1;
+    } else if (squareDirectionY == -1 && squarePos.top < 0) {
+      squareDirectionY = 1;
     }
   }
 
