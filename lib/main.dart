@@ -1,67 +1,43 @@
+import 'package:flame/palette.dart';
 import 'package:flutter/material.dart';
+import 'package:flame/game.dart';
 
 void main() {
-  runApp(const MyApp());
+  final myGame = Jogo();
+  runApp(
+    GameWidget(
+      game: myGame,
+    ),
+  );
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class Jogo extends Game {
+  static const int squareSpeed = 400;
+  late Rect squarePos;
+  int squareDirection = 1;
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Jogo das Sílabas',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Jogo das Sílabas'),
-    );
+  Future<void> onLoad() async {
+    squarePos = const Rect.fromLTWH(0, 0, 100, 100);
   }
-}
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-  final String title;
+  static final squarePaint = BasicPalette.white.paint();
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
+  void update(double dt) {
+    //put the logic in here
+    squarePos = squarePos.translate(squareSpeed * squareDirection * dt, 0);
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
+    if (squareDirection == 1 && squarePos.right > size.x) {
+      squareDirection = -1;
+    } else if (squareDirection == -1 && squarePos.left < 0) {
+      squareDirection = 1;
+    }
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'Eu já preguei sobre Linux ',
-            ),
-            Text(
-              '$_counter vezes',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
-    );
+  void render(Canvas canvas) {
+    //put graphics in here
+    canvas.drawRect(squarePos, squarePaint);
   }
 }
