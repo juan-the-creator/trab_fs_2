@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:trab_fs_2/widgets/CAppBar.dart';
+// import 'package:trab_fs_2/widgets/CAppBar.dart';
+import 'package:trab_fs_2/widgets/CAppBarButtons.dart';
 import 'package:trab_fs_2/widgets/CButton.dart';
 import 'package:trab_fs_2/widgets/CButtonExit.dart';
 
@@ -14,7 +15,7 @@ class UITest extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "UI Test",
       home: Scaffold(
-        appBar: CAppBar(),
+        appBar: CAppBarButtons(),
         body: Column(
           children: [
             CButton(btnText: "JOGAR!"),
