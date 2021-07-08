@@ -1,44 +1,31 @@
-import 'package:flame/palette.dart';
 import 'package:flutter/material.dart';
-import 'package:flame/game.dart';
+import 'package:trab_fs_2/widgets/CAppBar.dart';
+import 'package:trab_fs_2/widgets/CButton.dart';
+import 'package:trab_fs_2/widgets/CButtonExit.dart';
 
 void main() {
-  final myGame = Jogo();
-  runApp(
-    GameWidget(
-      game: myGame,
-    ),
-  );
+  runApp(UITest());
 }
 
-//https://flame-engine.org/docs/#/
-class Jogo extends Game {
-  static const int squareSpeed = 400;
-  late Rect squarePos;
-  int squareDirection = 1;
-
+class UITest extends StatelessWidget {
   @override
-  Future<void> onLoad() async {
-    squarePos = const Rect.fromLTWH(0, 0, 100, 100);
-  }
-
-  static final squarePaint = BasicPalette.white.paint();
-
-  @override
-  void update(double dt) {
-    //put the logic in here
-    squarePos = squarePos.translate(squareSpeed * squareDirection * dt, 0);
-
-    if (squareDirection == 1 && squarePos.right > size.x) {
-      squareDirection = -1;
-    } else if (squareDirection == -1 && squarePos.left < 0) {
-      squareDirection = 1;
-    }
-  }
-
-  @override
-  void render(Canvas canvas) {
-    //put graphics in here
-    canvas.drawRect(squarePos, squarePaint);
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: "UI Test",
+      home: Scaffold(
+        appBar: CAppBar(),
+        body: Column(
+          children: [
+            CButton(btnText: "JOGAR!"),
+            CButton(btnText: "AJUDA"),
+            CButton(btnText: "REGRAS DE SEPARAÇÃO"),
+            CButtonExit(
+              btnText: "< SAIR",
+            )
+          ],
+        ),
+      ),
+    );
   }
 }
