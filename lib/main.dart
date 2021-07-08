@@ -13,13 +13,20 @@ void main() {
 }
 
 //https://flame-engine.org/docs/#/
-class Jogo extends BaseGame with HasDraggableComponents {
+class Jogo extends BaseGame with HasCollidables, HasDraggableComponents {
   final double zoom = 1;
   bool debugMode = true;
+
+  // @override
+  // void onTapDown(TapDownInfo info) {
+  //   add(Letter(info.eventPosition.game));
+  // }
+
   @override
   Future<void> onLoad() async {
     camera.zoom = zoom;
     add(Letter());
     add(Letter()..y = 350);
+    add(ScreenCollidable());
   }
 }
