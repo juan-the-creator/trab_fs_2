@@ -9,6 +9,10 @@ void main() {
   runApp(UITest());
 }
 
+void printShit() {
+  print("Shit");
+}
+
 class UITest extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -19,7 +23,10 @@ class UITest extends StatelessWidget {
         appBar: CAppBarButtons(),
         body: Column(
           children: [
-            CButton(btnText: "JOGAR!"),
+            CButton(
+              btnText: "PRINT!",
+              callback: printShit,
+            ),
             Row(
               children: [CField(), CField(), CField(), CField()],
             )
