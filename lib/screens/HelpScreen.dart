@@ -12,37 +12,63 @@ class HelpScreen extends StatelessWidget {
       title: "Ajuda",
       home: Scaffold(
         appBar: CAppBarButtons(),
-        body: Center(
-          child: Column(
-            children: const [
-              BigWord(word: "Como jogar"),
-              Text(
-                  'Para iniciar o jogo, no menu inicial, clique no botão Jogar. Em seguida, escolha a dificuldade desejada e o jogo será iniciado.'),
-              Text(
-                  'Lhe será apresentado(a) uma palavra aleatória, e você deverá escrever em cada quadradinho branco quais as sílabas pertecem a ele.'),
-              Text(
-                  'Note que a quantidade de quadradinhos brancos refletem na quantidade de sílabas da palavra.'),
-              SizedBox(
-                height: 10.0,
-              ),
-              BigWord(word: "Regras de divisão silábica"),
-              Text('Lembre-se, separam-se:'),
-              Text('Vogais idênticas, como ca-fe-ei-ra.'),
-              Text('Hiatos, como di-a.'),
-              Text('Dígrafos (rr, ss, sc, sç, xc), como des-ci-da.'),
-              Text('Não se separam:'),
-              Text('Ditongos, como i-dei-a.'),
-              Text('Tritongos, como u-ru-guai.'),
-              Text('Dígrafos (ch, lh, nh, qu, gu), como cha-ve.'),
-              Text('Encontros Consonantais Perfeitos, como a-tlân-ti-co.'),
-              Text(
-                  'Para mais exemplos, visite o site: https://www.todamateria.com.br/separacao-silabica/'),
-              SizedBox(
-                height: 10.0,
-              ),
-            ],
+        body: SingleChildScrollView(
+          child: Center(
+            child: Column(
+              children: const [
+                BigWord(word: "Como jogar"),
+                SizedBox(
+                  height: 10.0,
+                ),
+                TextFlexSize(
+                  word:
+                      'Para iniciar o jogo, no menu inicial, clique no botão Jogar. Em seguida, escolha a dificuldade desejada e o jogo será iniciado. Uma palavra aleatória será exibida, e você deverá escrever em cada quadradinho branco quais as sílabas pertecem a ele. Note que a quantidade de quadradinhos brancos refletem na quantidade de sílabas da palavra.',
+                ),
+                SizedBox(
+                  height: 10.0,
+                ),
+                BigWord(word: "Regras de divisão silábica"),
+                TextFlexSize(word: 'Lembre-se, separam-se:'),
+                TextFlexSize(word: 'Vogais idênticas, como ca-fe-ei-ra.'),
+                TextFlexSize(word: 'Hiatos, como di-a.'),
+                TextFlexSize(
+                    word: 'Dígrafos (rr, ss, sc, sç, xc), como des-ci-da.'),
+                TextFlexSize(word: 'Não se separam:'),
+                TextFlexSize(word: 'Ditongos, como i-dei-a.'),
+                TextFlexSize(word: 'Tritongos, como u-ru-guai.'),
+                TextFlexSize(
+                    word: 'Dígrafos (ch, lh, nh, qu, gu), como cha-ve.'),
+                TextFlexSize(
+                    word:
+                        'Encontros Consonantais Perfeitos, como a-tlân-ti-co.'),
+                TextFlexSize(
+                    word:
+                        'Para mais exemplos, visite o site: https://www.todamateria.com.br/separacao-silabica/'),
+                SizedBox(
+                  height: 10.0,
+                ),
+              ],
+            ),
           ),
         ),
+      ),
+    );
+  }
+}
+
+class TextFlexSize extends StatelessWidget {
+  final String word;
+  final double fontSize;
+  const TextFlexSize({Key? key, this.word = "PALAVRA", this.fontSize = 24})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      word,
+      textAlign: TextAlign.center,
+      style: TextStyle(
+        fontSize: fontSize,
       ),
     );
   }
