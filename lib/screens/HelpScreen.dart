@@ -28,12 +28,21 @@ class HelpScreen extends StatelessWidget {
                   height: 10.0,
                 ),
                 BigWord(word: "Regras de divisão silábica"),
-                TextFlexSize(word: 'Lembre-se, separam-se:'),
+                TextFlexSize(
+                  word: 'Separam-se:',
+                  bold: true,
+                ),
                 TextFlexSize(word: 'Vogais idênticas, como ca-fe-ei-ra.'),
                 TextFlexSize(word: 'Hiatos, como di-a.'),
                 TextFlexSize(
                     word: 'Dígrafos (rr, ss, sc, sç, xc), como des-ci-da.'),
-                TextFlexSize(word: 'Não se separam:'),
+                SizedBox(
+                  height: 10.0,
+                ),
+                TextFlexSize(
+                  word: 'Não se separam:',
+                  bold: true,
+                ),
                 TextFlexSize(word: 'Ditongos, como i-dei-a.'),
                 TextFlexSize(word: 'Tritongos, como u-ru-guai.'),
                 TextFlexSize(
@@ -59,7 +68,9 @@ class HelpScreen extends StatelessWidget {
 class TextFlexSize extends StatelessWidget {
   final String word;
   final double fontSize;
-  const TextFlexSize({Key? key, this.word = "PALAVRA", this.fontSize = 24})
+  final bool bold;
+  const TextFlexSize(
+      {Key? key, this.word = "PALAVRA", this.fontSize = 24, this.bold = false})
       : super(key: key);
 
   @override
@@ -69,6 +80,8 @@ class TextFlexSize extends StatelessWidget {
       textAlign: TextAlign.center,
       style: TextStyle(
         fontSize: fontSize,
+        fontWeight: bold ? FontWeight.w900 : FontWeight.normal,
+        // fontFamily: "Karla",
       ),
     );
   }
