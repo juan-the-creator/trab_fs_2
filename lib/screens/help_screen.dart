@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:trab_fs_2/widgets/BigWord.dart';
-import 'package:trab_fs_2/widgets/CAppBarButtons.dart';
+import 'package:trab_fs_2/widgets/big_word.dart';
+import 'package:trab_fs_2/widgets/c_app_bar_buttons.dart';
 
 class HelpScreen extends StatelessWidget {
   const HelpScreen({Key? key}) : super(key: key);
