@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 
+void dbgClick() {
+  print("Clicked");
+}
+
 class CButton extends StatelessWidget {
   final String btnText;
-  final VoidCallback? callback;
-  const CButton({Key? key, this.btnText = "BOTÃO", this.callback})
+  final VoidCallback callback;
+  const CButton({Key? key, this.btnText = "BOTÃO", this.callback = dbgClick})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
