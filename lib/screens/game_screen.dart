@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:trab_fs_2/widgets/big_word.dart';
 import 'package:trab_fs_2/widgets/c_app_bar_buttons.dart';
@@ -22,7 +24,7 @@ class _GameState extends State<Game> {
   Function eq = const ListEquality().equals;
 
   late var word = loadWord();
-
+  var lastN;
   var result = 0;
 
   @override
@@ -52,6 +54,14 @@ class _GameState extends State<Game> {
     );
   }
 
+  void newGame() {
+    word = loadWord();
+
+    for (TextEditingController controller in textController) {
+      controller.text = '';
+    }
+  }
+
   void verifySyllables() {
     word;
     var syllables = getInput();
@@ -59,6 +69,13 @@ class _GameState extends State<Game> {
     if (eq(word['silabas'], syllables)) {
       setState(() {
         result = 1;
+      });
+      Future.delayed(const Duration(milliseconds: 1500), () {
+        newGame();
+
+        setState(() {
+          result = 0;
+        });
       });
     } else {
       setState(() {
@@ -147,7 +164,12 @@ class _GameState extends State<Game> {
       },
     ];
     var n = new Random();
-    return words[n.nextInt(10)];
+    var newN;
+    do {
+      newN = n.nextInt(10);
+    } while (newN == lastN);
+    lastN = newN;
+    return words[newN];
   }
 
   List<Widget> buildFieldList(size) {
@@ -201,10 +223,10 @@ class _GameState extends State<Game> {
             textController: textController[0],
           ),
           CField(
-            textController: textController[2],
+            textController: textController[1],
           ),
           CField(
-            textController: textController[1],
+            textController: textController[2],
           ),
           CField(
             textController: textController[3],
