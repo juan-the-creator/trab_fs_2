@@ -26,7 +26,7 @@ class _CField extends State<CField> {
               controller: widget.textController,
               textCapitalization: TextCapitalization.characters,
               textAlign: TextAlign.center,
-              maxLength: 4,
+              maxLength: 5,
               maxLengthEnforcement: MaxLengthEnforcement.enforced,
               decoration: InputDecoration(
                   enabledBorder: const OutlineInputBorder(

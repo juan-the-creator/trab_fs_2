@@ -5,6 +5,7 @@ import 'package:trab_fs_2/widgets/c_button.dart';
 import 'package:trab_fs_2/widgets/c_field.dart';
 import 'package:trab_fs_2/widgets/c_overlay.dart';
 import 'package:collection/collection.dart';
+import 'dart:math';
 
 class Game extends StatefulWidget {
   const Game({Key? key}) : super(key: key);
@@ -19,13 +20,9 @@ class _GameState extends State<Game> {
       List.generate(5, (i) => TextEditingController());
 
   Function eq = const ListEquality().equals;
-  //todo:
-  //var word = loadWord();
-  var word = {
-    "palavra": "ayaya",
-    "numSilabas": 3,
-    "silabas": ["a", "ya", "ya"]
-  };
+
+  late var word = loadWord();
+
   var result = 0;
 
   @override
@@ -94,6 +91,63 @@ class _GameState extends State<Game> {
     }
 
     return COverlay();
+  }
+
+  Map loadWord() {
+    var words = [
+      {
+        "palavra": "abacate",
+        "numSilabas": 4,
+        "silabas": ["a", "ba", "ca", "te"]
+      },
+      {
+        "palavra": "saída",
+        "numSilabas": 3,
+        "silabas": ["sa", "í", "da"]
+      },
+      {
+        "palavra": "goiaba",
+        "numSilabas": 3,
+        "silabas": ["goi", "a", "ba"]
+      },
+      {
+        "palavra": "chuveiro",
+        "numSilabas": 3,
+        "silabas": ["chu", "vei", "ro"]
+      },
+      {
+        "palavra": "jabuticaba",
+        "numSilabas": 5,
+        "silabas": ["ja", "bu", "ti", "ca", "ba"]
+      },
+      {
+        "palavra": "imperador",
+        "numSilabas": 4,
+        "silabas": ["im", "pe", "ra", "dor"]
+      },
+      {
+        "palavra": "esperança",
+        "numSilabas": 4,
+        "silabas": ["es", "pe", "ran", "ça"]
+      },
+      {
+        "palavra": "transportar",
+        "numSilabas": 3,
+        "silabas": ["trans", "por", "tar"]
+      },
+      {
+        "palavra": "papagaio",
+        "numSilabas": 4,
+        "silabas": ["pa", "pa", "gai", "o"]
+      },
+      {
+        "palavra": "terra",
+        "numSilabas": 2,
+        "silabas": ["ter", "ra"]
+      },
+    ];
+    var n = new Random();
+    return words[n.nextInt(10)];
   }
 
   List<Widget> buildFieldList(size) {
