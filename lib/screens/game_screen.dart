@@ -71,7 +71,7 @@ class _GameState extends State<Game> {
   List getInput() {
     var input = [];
     for (TextEditingController controller in textController) {
-      if (controller.text != '') input.add(controller.text);
+      if (controller.text != '') input.add(controller.text.toLowerCase());
     }
     return input;
   }
