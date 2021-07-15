@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class CField extends StatefulWidget {
+  final TextEditingController textController;
+
+  const CField({Key? key, required this.textController}) : super(key: key);
   @override
   _CField createState() {
     return _CField();
@@ -20,6 +23,7 @@ class _CField extends State<CField> {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             child: TextField(
+              controller: widget.textController,
               textCapitalization: TextCapitalization.characters,
               textAlign: TextAlign.center,
               maxLength: 4,

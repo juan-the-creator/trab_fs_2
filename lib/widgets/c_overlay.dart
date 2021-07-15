@@ -3,8 +3,12 @@ import 'package:flutter/material.dart';
 class COverlay extends StatefulWidget {
   final String message;
   final String syllables;
+  final Color color;
   const COverlay(
-      {Key? key, this.message = "PARABÉNS", this.syllables = "Você acertou!!!"})
+      {Key? key,
+      this.message = "PARABÉNS",
+      this.syllables = "Você acertou!!!",
+      this.color = const Color(0xFF2E7D32)})
       : super(key: key);
   @override
   _COverlay createState() {
@@ -35,7 +39,7 @@ class _COverlay extends State<COverlay> {
                             ),
                             Text(widget.message,
                                 style: TextStyle(
-                                  color: Colors.green[800],
+                                  color: widget.color,
                                   letterSpacing: 3.5,
                                   fontWeight: FontWeight.w900,
                                   fontFamily: "Karla",
