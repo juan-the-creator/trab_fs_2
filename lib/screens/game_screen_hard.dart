@@ -165,6 +165,18 @@ class _GameStateHard extends State<GameHard> {
     );
   }
 
+  List<Widget> buildFieldList(size) {
+    List<Widget> widgetArray = [];
+
+    for (int i = 0; i < size; i++) {
+      widgetArray.add(CField(
+        textController: textController[i],
+      ));
+    }
+
+    return widgetArray;
+  }
+
   Map loadWord() {
     var words = [
       {
@@ -225,77 +237,5 @@ class _GameStateHard extends State<GameHard> {
     } while (newN == lastN);
     lastN = newN;
     return words[newN];
-  }
-
-  List<Widget> buildFieldList(size) {
-    //print(size);
-    switch (size) {
-      case 1:
-        return [
-          CField(
-            textController: textController[0],
-          )
-        ];
-      case 2:
-        return [
-          CField(
-            textController: textController[0],
-          ),
-          CField(
-            textController: textController[1],
-          )
-        ];
-      case 3:
-        return [
-          CField(
-            textController: textController[0],
-          ),
-          CField(
-            textController: textController[1],
-          ),
-          CField(
-            textController: textController[2],
-          )
-        ];
-      case 4:
-        return [
-          CField(
-            textController: textController[0],
-          ),
-          CField(
-            textController: textController[1],
-          ),
-          CField(
-            textController: textController[2],
-          ),
-          CField(
-            textController: textController[3],
-          ),
-        ];
-      case 5:
-        return [
-          CField(
-            textController: textController[0],
-          ),
-          CField(
-            textController: textController[1],
-          ),
-          CField(
-            textController: textController[2],
-          ),
-          CField(
-            textController: textController[3],
-          ),
-          CField(
-            textController: textController[4],
-          ),
-        ];
-    }
-
-    return [
-      CField(
-        textController: textController[0],
-      )
-    ];
   }
 }
